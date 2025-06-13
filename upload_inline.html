@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Text Extractor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        .result, .error {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .result {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+        }
+        .error {
+            color: red;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload an Image to Extract Text</h1>
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if error %}
+    <div class="error">
+        <strong>Error:</strong> {{ error }}
+    </div>
+    {% endif %}
+
+    {% if text %}
+    <div class="result">
+        <h2>Extracted Text:</h2>
+        <p>{{ text }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
