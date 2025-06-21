@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Text Extractor</title>
+    <title>Material Analysis with Eco-Friendly Alternatives</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,13 +28,36 @@
             color: red;
             border: 1px solid red;
         }
+        input[type="text"], input[type="file"], button {
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
-    <h1>Upload an Image to Extract Text</h1>
+    <h1>Upload an Object for Material Analysis</h1>
     <form action="/" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*" required>
-        <button type="submit">Upload</button>
+        <label for="brand_name">Brand Name:</label>
+        <input type="text" name="brand_name" id="brand_name" placeholder="Enter the brand name" required>
+        <br><br>
+        <label for="object_name">Object Name:</label>
+        <input type="text" name="object_name" id="object_name" placeholder="Enter the object name" required>
+        <br><br>
+        <label for="file">Upload Image:</label>
+        <input type="file" name="file" id="file" accept="image/*" required>
+        <br><br>
+        <button type="submit">Analyze</button>
     </form>
 
     {% if error %}
@@ -47,6 +70,24 @@
     <div class="result">
         <h2>Extracted Text:</h2>
         <p>{{ text }}</p>
+    </div>
+    {% endif %}
+
+    {% if objects %}
+    <div class="result">
+        <h2>Detected Objects:</h2>
+        <ul>
+            {% for obj in objects %}
+            <li>{{ obj }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if material_scores_and_alternatives %}
+    <div class="result">
+        <h2>Material Analysis and Alternatives:</h2>
+        <p>{{ material_scores_and_alternatives }}</p>
     </div>
     {% endif %}
 </body>
