@@ -7,3 +7,4 @@ yolov3.weights from: https://drive.google.com/drive/folders/1AvcuhxG6z6VhFKnQIQ4
 Install OpenAI
 Replace the Open AI API key in PUT_OPENAI_KEY_HERE in the app.py code line no: 14
 pip install pytesseract, opencv, pandas, pillow, flask, numpy
+THIS MODEL TAKES AN IMAGE, EXTRACTS TEXTS, RECOGNIZES OBJECT IN IT, USEES OPENAI API TO GENERATE RESPONSES
